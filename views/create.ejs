@@ -1,0 +1,43 @@
+<%-include("./partials/header.ejs")-%>
+    <%if (locals.id && locals.authorName && locals.title && locals.content){%>
+        <form action="/submit" method="POST">
+            <input type="hidden" name="id" value="<%=id%>">
+            <div class=text1>
+                <label for="authorName">Name of the Author:</label>
+                <input type="text" name="authorName" id="authorName" value="<%=authorName%>">
+            </div>
+            <br>
+            <div class="text2">
+                <label for="title">Title of the Blog:</label>
+                <input type="text" name="title" id="title" value="<%=title%>">
+            </div>
+            <br>
+            <div class="text3">
+                <label for="content">Content of the Blog:</label>
+                <textarea name="content" id="content"><%=content%></textarea>
+            </div>
+            <br>
+            <input type="submit" value="Update" class="submit">
+        </form>
+    <%}else{%>
+        <form action="/submit" method="POST">
+            <div class=text1>
+                <label for="authorName">Name of the Author:</label>
+                <input type="text" name="authorName" id="authorName" placeholder="Enter author's name">
+            </div>
+            <br>
+            <div class="text2">
+                <label for="title">Title of the Blog:</label>
+                <input type="text" name="title" id="title" placeholder="Enter title">
+            </div>
+            <br>
+            <div class="text3">
+                <label for="content">Content of the Blog:</label>
+                <textarea name="content" id="content"></textarea>
+            </div>
+            <br>
+            <input type="submit" value="Submit" class="submit">
+        </form>
+    <%}%>
+    
+<%-include("./partials/footer.ejs")-%>

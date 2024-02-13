@@ -1,0 +1,23 @@
+<%-include("./partials/header.ejs")-%>
+    <div class="body">
+    <h1>Most Recent Blogs</h1>
+    <br>
+    <%if (locals.blogs && locals.blogs.length>0){%>
+        <%blogs.forEach(blog=>{%>
+            <div class="card">
+                <h3><%=blog['title']%></h3>
+                <h4>Written by <%=blog['authorName']%></h4>
+                <div class="button-container">
+                    <a href="/view/<%= blog['id'] %>">View full blog</a>
+                    <a href="/delete/<%=blog['id']%>">Delete</a>
+                    <a href="/create?id=<%=blog['id']%>&authorName=<%=blog['authorName']%>&title=<%=blog['title']%>&content=<%=blog['content']%>">Update</a>
+                </div>
+            </div>
+        <%});%>
+    <%}else{%>
+        <div class="box">
+            <img src="/images/nocontent.png" alt="nocontent">
+        </div>
+    <%}%>
+    </div>
+<%-include("./partials/footer.ejs")-%>
